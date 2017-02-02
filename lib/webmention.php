@@ -19,7 +19,7 @@ class Webmention {
 
     if(isset($headers['link'])) {
       foreach(explode(',', $headers['link']) as $link) {
-        if(preg_match('!\<(.*?)\>;\s*rel="?(.*?\s?)webmention(\s?.*?)"?!', $link, $match)) {
+        if(preg_match('!\<(.*?)\>;\s*rel="?(.*?\s)?webmention(\s.*?)?"?!', $link, $match)) {
 
           $endpoint = url::makeAbsolute($match[1], $url);
 
@@ -45,7 +45,7 @@ class Webmention {
         return $endpoint;
       }
     }
-    
+
     return false;
   }
 }
