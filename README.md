@@ -36,18 +36,22 @@ A helper class for Micropub requests
 
 Usage:
 ```php
-micropub::setEndpoint('http://example.com/micropub', 'xxx');
+// Set URL and access token of the endpoint to use
+micropub::setEndpoint('http://yoursite.com/micropub', 'xxx');
 
 micropub::reply('http://example.com/a-nice-post', "Oh what a post!");
 micropub::like('http://example.com/another-post');
+micropub::rsvp('http://example.com/an-event', 'maybe');
 
-micropub::post([
+$newURL = micropub::post([
   'name' => 'Custom posts are possible!',
   'content' => 'This is a story about (...)',
+  'category' => ['story', 'custom'],
   'mp-slug' => 'custom-posts-are-possible',
-  'mp-syndicate-to' => 'http://twitter.com/example',
+  'mp-syndicate-to' => 'https://twitter.com/example',
 ]);
 
+go($newURL);
 ```
 
 - `micropub::like($url)`  
