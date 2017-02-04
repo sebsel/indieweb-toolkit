@@ -27,7 +27,7 @@ Do things with webmentions.
 
 - `webmention::discoverEndpoint($url)`  
   Discovers an endpoint of a URL.
-  
+
   TODO: solve relative urls better (see https://github.com/getkirby/toolkit/pull/213)
 
 ## Micropub
@@ -43,7 +43,7 @@ micropub::reply('http://example.com/a-nice-post', "Oh what a post!");
 micropub::like('http://example.com/another-post');
 micropub::rsvp('http://example.com/an-event', 'maybe');
 
-$newURL = micropub::post([
+$newURL = micropub::send([
   'name' => 'Custom posts are possible!',
   'content' => 'This is a story about (...)',
   'category' => ['story', 'custom'],
@@ -56,24 +56,24 @@ go($newURL);
 
 - `micropub::like($url)`  
   Like a post
-  
+
 - `micropub::reply($url, $message)`  
   Reply to a post
-  
+
 - `micropub::note($content)`  
   Create basic post
 
 - `micropub::rsvp($url, $rsvp = 'yes', $message = null)`  
   RSVP 'yes' to an event, or set `$rsvp` and `$message` for custom RSVPs.
-  
+
 - `micropub::bookmark($url)`  
   Bookmark a post (sends `bookmark-of`)
-  
-- `micropub::post($data, $endpoint = null)`  
+
+- `micropub::send($data, $endpoint = null)`  
   Create your own Micropub request. With the second param you can set a custom endpoint as an array with `['endpoint' => 'http://example.com/micropub', 'token' => 'xxx']`.
-  
+
 - `micropub::setEndpoint($url, $token)`  
   Set the endpoint to use.
-  
+
 - `micropub::getEndpoint()`  
   Returns the current endpoint array.

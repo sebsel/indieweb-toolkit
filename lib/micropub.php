@@ -12,7 +12,7 @@ class Micropub {
     return static::$endpoint;
   }
 
-  public static function post($data, $endpoint = null) {
+  public static function send($data, $endpoint = null) {
 
     if($endpoint === null) $endpoint = static::getEndpoint();
 
@@ -40,25 +40,25 @@ class Micropub {
   }
 
   public static function note($content) {
-    return static::post([
+    return static::send([
       'content' => $content,
     ]);
   }
 
   public static function like($url) {
-    return static::post([
+    return static::send([
       'like-of' => $url,
     ]);
   }
 
   public static function bookmark($url) {
-    return static::post([
+    return static::send([
       'bookmark-of' => $url,
     ]);
   }
 
   public static function reply($url, $content) {
-    return static::post([
+    return static::send([
       'in-reply-to' => $url,
       'content' => $content,
     ]);
@@ -70,6 +70,6 @@ class Micropub {
       'rsvp' => $value,
     ];
     if($content) $data['content'] = $content;
-    return static::post($data);
+    return static::send($data);
   }
 }

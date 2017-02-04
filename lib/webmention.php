@@ -3,7 +3,7 @@
 class Webmention {
 
   /**
-   * Parse Microformats2 from a HTML string
+   * Discover a webmention endpoint
    *
    * @param string $url The url of the page you want to discover the endpoint for
    * @return string the URL of the Endpoint or false if not found
