@@ -30,7 +30,7 @@ class SiloAPI {
     static::$tokens[$type] = $token;
   }
 
-  public static function like($type, $url) {
+  public static function like($url, $type) {
     $adapter = static::adapter($type);
     return call_user_func($adapter['like'], $url);
   }
