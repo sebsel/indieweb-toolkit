@@ -50,4 +50,35 @@ class Endpoint {
       return false;
     }
   }
+
+  public static function media($root, $rooturl, $callback = null) {
+
+    IndieAuth::requireMe();
+
+    if (!r::files()) {
+      echo response::error('No file', 400);
+      return;
+    }
+
+    // Create some 'unguessable' name
+    $filename  = str::random(6, ['alphaLower', 'num']) . '-{safeFilename}';
+
+    $path = $root . DS . $filename;
+    $url  = rtrim($rooturl, '/') . '/' . $filename;
+
+    try {
+      $upload = new Upload($path, ['input' => 'file']);
+      if (!$upload->file()) throw new Error();
+    } catch(Error $e) {
+      echo response::error('Upload failed: '.$e->getMessage(), 500);
+      return;
+    }
+
+    $url = $rooturl . '/' . $upload->file()->filename();
+
+    // Everything went fine, so send a header and do a callback
+    echo header::redirect($url, 201);
+    if(is_callable($callback)) call($callback, [$url, $upload->file()]);
+    return;
+  }
 }
