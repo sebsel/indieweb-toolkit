@@ -17,7 +17,7 @@ class IndieAuth {
    * Checks the token for a me-value and compares it to the required me-value
    *
    * @param str $requiredMe Url of allowed person, defaults to this site's url
-   * @return bool True on success or throws an Forbidden error
+   * @return bool true on success or exits with a HTTP 403 header
    */
   public static function requireMe($requiredMe = null) {
 
@@ -36,7 +36,7 @@ class IndieAuth {
    * Gets the Access Token by querying the Token Endpoint with the Authentication Bearer
    *
    * @param str $requiredScope The scope that is required in order to pass
-   * @return bool True on success or throws an Insufficient Scope error
+   * @return bool true on success or exits with a HTTP 401 header
    */
   public static function requireScope($requiredScope) {
 
@@ -54,7 +54,7 @@ class IndieAuth {
    *
    * @param str $bearer The Authentication Bearer to
    * @param str $requiredScope The scope that is required in order to pass
-   * @return object the Token object
+   * @return object the Token object or exits with a HTTP 400 header
    */
   public static function getToken($bearer = null) {
 
@@ -84,7 +84,7 @@ class IndieAuth {
   /**
    * Gets the Authentication Bearer from either the HTTP-header or the POST-body
    *
-   * @return str The Authentication Bearer
+   * @return str The Authentication Bearer or exits with a HTTP 401 header
    */
   public static function getBearer() {
 
