@@ -77,3 +77,9 @@ go($newURL);
 
 - `micropub::getEndpoint()`  
   Returns the current endpoint array.
+
+
+=== Endpoint ===
+
+See here for now:
+https://seblog.nl/2017/02/05/1/day-21-basic-micropub-endpoint
