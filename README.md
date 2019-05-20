@@ -2,6 +2,8 @@
 
 A Kirby Toolkit style toolkit for IndieWeb stuff.
 
+**This repo was an attempt to bridge between other code. Feel free to start something new based of this repo. Please use an up to date version of the PHP microformats parser.**
+
 ## Overview
 
 This toolkit is meant to be used next to the [Kirby Toolkit](http://github.com/getkirby/toolkit). This is also a dependency.
